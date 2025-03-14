@@ -1,0 +1,26 @@
+<!--
+/********************************************************************************
+* WEB322 – Assignment 05
+*
+* I declare that this assignment is my own work in accordance with Seneca's
+* Academic Integrity Policy:
+*
+* https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
+*
+* Name: Bruno Felipi de Souza Student ID: 132021239 Date: 2025-03-03
+*
+* Published URL: https://web322assignment-brunos-projects-00093bef.vercel.app/
+*
+********************************************************************************/
+-->
+
+<nav class="bg-blue-600 text-white p-4 shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="/" class="text-3xl font-bold">Climate Solutions</a>
+        <div class="flex space-x-6 items-center">
+            <a class="<%= (page === '/solutions/projects') ? 'active' : '' %>" href="/solutions/projects">View Projects</a>
+            <a class="<%= (page === '/about') ? 'active' : '' %>" href="/about">About</a>
+            <a class="<%= (page == '/solutions/addProject') ? 'active' : '' %>" href="/solutions/addProject">Add Project</a>
+        </div>
+    </div>
+</nav>

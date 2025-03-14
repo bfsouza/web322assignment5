@@ -1,0 +1,94 @@
+<!--
+/********************************************************************************
+* WEB322 – Assignment 05
+*
+* I declare that this assignment is my own work in accordance with Seneca's
+* Academic Integrity Policy:
+*
+* https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
+*
+* Name: Bruno Felipi de Souza Student ID: 132021239 Date: 2025-03-03
+*
+* Published URL: https://web322assignment-brunos-projects-00093bef.vercel.app/
+*
+********************************************************************************/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Project</title>
+    <link rel="stylesheet" href="/path-to-your-stylesheet.css"> <!-- Adicione seu CSS aqui -->
+</head>
+<body>
+    <!-- Renderiza a barra de navegação com a página atual -->
+    <%- include('partials/navbar', { page: '' }) %>
+
+    <!-- Hero ou título da página -->
+    <section class="hero">
+        <h1>Edit Project: <%= project.title %></h1>
+        <p>Edit the project by updating the form below.</p>
+    </section>
+
+    <!-- Formulário de edição de projeto -->
+    <section class="form-container">
+        <form action="/solutions/editProject" method="POST">
+            <input type="hidden" name="id" value="<%= project.id %>">
+            <!-- Título -->
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" value="<%= project.title %>" required />
+            </div>
+
+            <!-- URL da imagem de destaque -->
+            <div class="form-group">
+                <label for="feature_img_url">Feature Image URL</label>
+                <input type="url" id="feature_img_url" name="feature_img_url" value="<%= project.feature_img_url %>" required />
+            </div>
+
+            <!-- Seletor de setor -->
+            <div class="form-group">
+                <label for="sector_id">Sector</label>
+                <select id="sector_id" name="sector_id" required>
+                    <% sectors.forEach(sector => { %>
+                        <option value="<%= sector.id %>" <%= (project.sector_id == sector.id) ? "selected" : "" %>><%= sector.sector_name %></option>
+                    <% }) %>
+                </select>
+            </div>
+
+            <!-- Resumo curto -->
+            <div class="form-group">
+                <label for="intro_short">Intro (Short)</label>
+                <textarea id="intro_short" name="intro_short" required><%= project.intro_short %></textarea>
+            </div>
+
+            <!-- Sumário curto -->
+            <div class="form-group">
+                <label for="summary_short">Summary (Short)</label>
+                <textarea id="summary_short" name="summary_short" required><%= project.summary_short %></textarea>
+            </div>
+
+            <!-- Impacto -->
+            <div class="form-group">
+                <label for="impact">Impact</label>
+                <textarea id="impact" name="impact" required><%= project.impact %></textarea>
+            </div>
+
+            <!-- URL da fonte original -->
+            <div class="form-group">
+                <label for="original_source_url">Original Source URL</label>
+                <input type="url" id="original_source_url" name="original_source_url" value="<%= project.original_source_url %>" required />
+            </div>
+
+            <!-- Botão de enviar -->
+            <div class="form-group">
+                <button type="submit">Update Project</button>
+            </div>
+        </form>
+        <!-- Botão de deletar -->
+        <a href="/solutions/deleteProject/<%= project.id %>" class="bg-red-500 text-white px-4 py-2 rounded mt-4 inline-block">Delete Project</a>
+    </section>
+
+</body>
+</html>

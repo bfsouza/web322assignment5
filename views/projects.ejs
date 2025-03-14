@@ -1,0 +1,75 @@
+<!--
+/********************************************************************************
+* WEB322 – Assignment 05
+*
+* I declare that this assignment is my own work in accordance with Seneca's
+* Academic Integrity Policy:
+*
+* https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
+*
+* Name: Bruno Felipi de Souza Student ID: 132021239 Date: 2025-03-03
+*
+* Published URL: https://web322assignment-brunos-projects-00093bef.vercel.app/
+*
+********************************************************************************/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Climate Solutions</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <%- include('partials/navbar', {page: '/solutions/projects'}) %>
+
+    <!-- Hero Section -->
+    <section class="container mx-auto my-12 text-center">
+        <div class="bg-blue-500 text-white p-10 rounded-lg shadow-lg">
+            <h1 class="text-4xl font-bold">Projects</h1>
+            <div class="mt-4">
+                <a href="/solutions/projects?sector=agriculture" class="bg-green-500 text-white px-4 py-2 rounded mx-2">Agriculture</a>                
+                <a href="/solutions/projects?sector=transport" class="bg-red-500 text-white px-4 py-2 rounded mx-2">Transport</a>
+                <a href="/solutions/projects?sector=industry" class="bg-purple-500 text-white px-4 py-2 rounded mx-2">Industry</a>
+                <a href="/solutions/projects" class="bg-purple-500 text-white px-4 py-2 rounded mx-2">All</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Table -->
+    <section class="container mx-auto my-8">
+        <table class="min-w-full bg-white shadow-md rounded-lg">
+            <thead>
+                <tr>
+                    <th class="py-2 px-4 border-b">Title</th>
+                    <th class="py-2 px-4 border-b">Sector</th>
+                    <th class="py-2 px-4 border-b">Summary</th>
+                    <th class="py-2 px-4 border-b">Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% projects.forEach(project => { %>
+                    <tr>
+                        <td class="py-2 px-4 border-b"><%= project.title %></td>
+                        <td class="py-2 px-4 border-b">
+                            <a href="/solutions/projects?sector=<%= project.Sector.sector_name %>" class="bg-blue-500 text-white px-2 py-1 rounded">
+                                <%= project.Sector.sector_name %>
+                            </a>
+                        </td>
+                        <td class="py-2 px-4 border-b"><%= project.summary_short %></td>
+                        <td class="py-2 px-4 border-b">
+                            <a href="/solutions/projects/<%= project.id %>" class="bg-green-500 px-2 py-1 rounded">
+                                Details
+                            </a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!--
+/********************************************************************************
+* WEB322 – Assignment 05
+*
+* I declare that this assignment is my own work in accordance with Seneca's
+* Academic Integrity Policy:
+*
+* https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
+*
+* Name: Bruno Felipi de Souza Student ID: 132021239 Date: 2025-03-03
+*
+* Published URL: https://web322assignment-brunos-projects-00093bef.vercel.app/
+*
+********************************************************************************/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Climate Solutions</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <%- include('partials/navbar', {page: ''}) %>
+
+    <!-- Hero Section -->
+    <section class="container mx-auto my-12 text-center">
+        <div class="bg-blue-500 text-white p-10 rounded-lg shadow-lg">
+            <h1 class="text-4xl font-bold"><%= project.title %></h1>
+            <p class="mt-4 text-lg">Below, you will find detailed information about the project: <%= project.title %></p>
+        </div>
+    </section>
+
+    <!-- Project Details -->
+    <section class="container mx-auto my-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <img src="<%= project.feature_img_url %>" alt="<%= project.title %>" class="w-full h-auto mb-4 rounded">
+            <p class="text-lg mb-4"><strong>Intro:</strong> <%= project.intro_short %></p>
+            <p class="text-lg mb-4"><strong>Impact:</strong> <%= project.impact %></p>
+            <p class="text-lg mb-4"><strong>More Information:</strong> <a href="<%= project.original_source_url %>" class="text-blue-500 underline" target="_blank">Click here</a></p>
+            <blockquote id="quote" class="italic text-gray-600"></blockquote>
+            <p id="author" class="text-right text-gray-600"></p>
+            <a href="#" onclick="history.back(); return false;" class="bg-blue-500 text-white px-4 py-2 rounded mt-4 inline-block">Back</a>
+            <a href="/solutions/editProject/<%= project.id %>" class="bg-green-500 text-white px-4 py-2 rounded mt-4 inline-block">Edit</a>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("https://dummyjson.com/quotes/random")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("quote").innerText = `"${data.quote}"`;
+                    document.getElementById("author").innerText = `- ${data.author}`;
+                })
+                .catch(error => console.error("Error fetching quote:", error));
+        });
+    </script>
+
+</body>
+</html>

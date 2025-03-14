@@ -1,0 +1,82 @@
+<!--
+/********************************************************************************
+* WEB322 – Assignment 05
+*
+* I declare that this assignment is my own work in accordance with Seneca's
+* Academic Integrity Policy:
+*
+* https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
+*
+* Name: Bruno Felipi de Souza Student ID: 132021239 Date: 2025-03-03
+*
+* Published URL: https://web322assignment-brunos-projects-00093bef.vercel.app/
+*
+********************************************************************************/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Solutions</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <%- include('partials/navbar') %>
+
+    <script>
+        const sectorDropdownButton = document.getElementById('sectorDropdownButton');
+        const sectorDropdownContent = document.getElementById('sectorDropdownContent');
+
+        sectorDropdownButton.addEventListener('click', () => {
+            sectorDropdownContent.classList.toggle('hidden');
+        });
+
+        window.addEventListener('click', (event) => {
+            if (!sectorDropdownButton.contains(event.target) && !sectorDropdownContent.contains(event.target)) {
+                sectorDropdownContent.classList.add('hidden');
+            }
+        });
+    </script>
+
+    <section class="container mx-auto my-12 text-center">
+        <div class="hero bg-blue-500 text-white p-10 rounded-lg shadow-lg">
+            <h1 class="text-4xl font-bold">Explore Sustainable Projects</h1>
+            <p class="mt-4 text-lg">Join the movement towards a sustainable future.</p>
+            <a href="/solutions/projects" class="btn btn-primary mt-6 px-6 py-3 text-lg">🌎 View Projects</a>
+            <p class="mt-4 text-sm opacity-80">Bruno Felipi de Souza - 132021239</p>
+        </div>
+    </section>
+
+    <section class="container mx-auto my-8 grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+        <div class="card bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition">
+            <img src="https://plus.unsplash.com/premium_photo-1716484905070-81336f22e401?q=80&w=2070&auto=format&fit=crop" alt="Project 1" class="w-full">
+            <div class="p-4">
+                <h3 class="text-xl font-semibold">Renewable Energy Plant</h3>
+                <p class="text-gray-600 mt-2">A revolutionary project focused on solar and wind energy.</p>
+                <a href="/solutions/projects/1" class="mt-4 block text-center btn btn-primary">🔍 View Details</a>
+            </div>
+        </div>
+
+        <div class="card bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition">
+            <img src="https://plus.unsplash.com/premium_photo-1661962982373-8cfad08924dd?q=80&w=1989&auto=format&fit=crop" alt="Project 2" class="w-full">
+            <div class="p-4">
+                <h3 class="text-xl font-semibold">Sustainable Farming</h3>
+                <p class="text-gray-600 mt-2">Using modern techniques to enhance crop growth sustainably.</p>
+                <a href="/solutions/projects/2" class="mt-4 block text-center btn btn-primary">🔍 View Details</a>
+            </div>
+        </div>
+
+        <div class="card bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition">
+            <img src="https://plus.unsplash.com/premium_photo-1715611967784-cf625ea00af9?q=80&w=1932&auto=format&fit=crop" alt="Project 3" class="w-full">
+            <div class="p-4">
+                <h3 class="text-xl font-semibold">Electric Transport System</h3>
+                <p class="text-gray-600 mt-2">Reducing emissions through fully electric city transport.</p>
+                <a href="/solutions/projects/3" class="mt-4 block text-center btn btn-primary">🔍 View Details</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
